@@ -10,12 +10,12 @@
 
     <VerticalStackLayout Spacing="10" Padding="20">
         <Label Text="📝 Descrição do Produto:" TextColor="#2E5AAC" FontAttributes="Bold"/>
-        <Entry x:Name=txt_descricao Text={Binding Descricao}/>
+        <Entry x:Name="txt_descricao" Text="{Binding Descricao}"/>
 
         <Label Text="🔢 Quantidade:" TextColor="#2E5AAC" FontAttributes="Bold"/>
-        <Entry x:Name=txt_quantidade Text={Binding Quantidade}/>
+        <Entry x:Name="txt_quantidade" Text="{Binding Quantidade}" Keyboard="Numeric"/>
 
         <Label Text="💲 Preço Unitário:" TextColor="#2E5AAC" FontAttributes="Bold"/>
-        <Entry x:Name=txt_preço Text={Binding Preco}/>
+        <Entry x:Name="txt_preço" Text="{Binding Preco}" Keyboard="Numeric"/>
     </VerticalStackLayout>
 </ContentPage>
