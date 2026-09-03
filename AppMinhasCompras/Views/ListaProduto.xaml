@@ -2,11 +2,53 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AppMinhasCompras.Views.ListaProduto"
-             Title="ListaProduto">
-    <VerticalStackLayout>
+             Title="Minhas Compras"
+             BackgroundColor="#F2F6FC">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="➕ Adicionar" Clicked="ToolbarItem_Clicked_1" />
+        <ToolbarItem Text="🧮 Somar" Clicked="ToolbarItem_Clicked" />
+    </ContentPage.ToolbarItems>
+
+    <VerticalStackLayout Padding="20" Spacing="10">
         <Label 
-            Text="Welcome to .NET MAUI!"
+            Text="🛒 Lista de Produtos"
+            FontSize="26"
+            FontAttributes="Bold"
+            TextColor="#2E5AAC"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
+        <SearchBar x:Name="searchBar" Placeholder="Pesquisar produto..." TextColor="Black"
+                   TextChanged="searchBar_TextChanged"/>
+        <ListView x:Name="listView" HasUnevenRows="True" ItemSelected="listView_ItemSelected">
+            <ListView.Header >
+                <Grid ColumnDefinitions="*, *, *, *, *" Padding="0,8" >
+                    <Label Grid.Column="0" Text="ID" TextColor="Black"/>
+                    <Label Grid.Column="1" Text="Descrição" TextColor="Black"/>
+                    <Label Grid.Column="2" Text="Preço" TextColor="Black"/>
+                    <Label Grid.Column="3" Text="Quantidade" TextColor="Black"/>
+                    <Label Grid.Column="4" Text="Total" TextColor="Black"/>
+                </Grid>
+            </ListView.Header>
+            <ListView.ItemTemplate>  
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.ContextActions>
+                            <MenuItem Text="Remover" Clicked="MenuItem_Clicked" IsDestructive="True"/>
+                        </ViewCell.ContextActions>
+                        <Grid ColumnDefinitions="*, *, *, *, *"
+                            RowDefinitions="Auto" 
+                            Padding="10,8">
+                            <Label Grid.Column="0" Text="{Binding Id}" TextColor="Black"/>
+                            <Label Grid.Column="1" Text="{Binding Descricao}" TextColor="Black"/>
+                            <Label Grid.Column="2" Text="{Binding Preco}" TextColor="Black"/>
+                            <Label Grid.Column="3" Text="{Binding Quantidade}" TextColor="Black"/>
+                            <Label Grid.Column="4" Text="{Binding Total}" TextColor="Black"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </VerticalStackLayout>
+
 </ContentPage>
