@@ -1,5 +1,4 @@
 namespace AppMinhasCompras.Views;
-
 using AppMinhasCompras.Models;
 using System.Collections.ObjectModel;
 
@@ -78,32 +77,6 @@ public partial class ListaProduto : ContentPage
         }
     }
 
-    private async Task MenuItem_Clicked(object sender, EventArgs e)
-    {
-        try 
-        {
-
-            MenuItem menuItem = sender as MenuItem;
-            Produto p = menuItem.CommandParameter as Produto;
-
-            bool confirm = await DisplayAlert(
-                "Confirmar",
-                "Deseja realmente remover {p.Descricao}?",
-                "Sim",
-                "Não"
-            );
-            if (confirm)
-            {
-                
-                 await App.Db.DeleteProduto(p.Id);
-                lista.Remove(p);
-            }
-        }
-        catch (Exception ex)
-        {
-            DisplayAlert("Erro", ex.Message, "OK");
-        }
-    }
 
     private void listView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
     {
@@ -118,6 +91,49 @@ public partial class ListaProduto : ContentPage
         catch (Exception ex)
         {
             DisplayAlert("Erro", ex.Message, "OK");
+        }
+    }
+
+    private async void MenuItem_Clicked_1(object sender, EventArgs e)
+    {
+        try
+        {
+
+            MenuItem menuItem = sender as MenuItem;
+            Produto p = menuItem.CommandParameter as Produto;
+
+            bool confirm = await DisplayAlert(
+                "Confirmar",
+                $"Deseja realmente remover {p.Descricao}?",
+                "Sim",
+                "Não"
+            );
+            if (confirm)
+            {
+
+                await App.Db.DeleteProduto(p.Id);
+                lista.Remove(p);
+            }
+        }
+        catch (Exception ex)
+        {
+            DisplayAlert("Erro", ex.Message, "OK");
+        }
+    }
+
+    private async void listView_Refreshing(object sender, EventArgs e)
+    {
+        try
+        {
+            lista.Clear();
+            List<Produto> tmp = await App.Db.getAllProdutos();
+
+            tmp.ForEach(i => lista.Add(i));
+
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Erro", ex.Message, "OK");
         }
     }
 }
