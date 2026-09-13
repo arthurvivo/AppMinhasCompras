@@ -26,6 +26,8 @@ namespace AppMinhasCompras.Models
             } }
         public double Preco { get; set; }
         public double Quantidade { get; set; }
+        public DateTime DataCadastro { get; set; } = DateTime.Now;
+
 
         public double Total { get => Quantidade * Preco; }
     }

@@ -18,5 +18,8 @@
 
         <Label Text="💲 Preço Unitário:" TextColor="#2E5AAC" FontAttributes="Bold"/>
         <Entry x:Name="txt_preço"/>
+
+        <Label Text="📅 Data da Compra:" TextColor="#2E5AAC" FontAttributes="Bold"/>
+        <DatePicker x:Name="dt_dataCadastro" Format="dd/MM/yyyy"/>
     </VerticalStackLayout>
 </ContentPage>

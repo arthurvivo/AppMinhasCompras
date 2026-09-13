@@ -38,8 +38,18 @@ namespace AppMinhasCompras.Helpers
 
         public Task<List<Produto>> SearchProduto(string d)
         {
-            string sql = "SELECT * FROM Produto WHERE descricao LIKE '%" + d+ "%'";
-            return _con.QueryAsync<Produto>(sql); 
+            string sql = "SELECT * FROM Produto WHERE descricao LIKE '%" + d + "%'";
+            return _con.QueryAsync<Produto>(sql);
+        }
+
+        public Task<List<Produto>> GetProdutosPorPeriodo(DateTime inicio, DateTime fim)
+        {
+            DateTime inicioAjustado = inicio.Date;
+            DateTime fimAjustado = fim.Date.AddDays(1).AddTicks(-1);
+
+            return _con.Table<Produto>()
+                        .Where(p => p.DataCadastro >= inicioAjustado && p.DataCadastro <= fimAjustado)
+                        .ToListAsync();
         }
     }
 

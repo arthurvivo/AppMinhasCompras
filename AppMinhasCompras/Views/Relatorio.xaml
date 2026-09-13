@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppMinhasCompras.Views.Relatorio"
+             Title="Relatório de Compras"
+             BackgroundColor="#F2F6FC">
+
+    <VerticalStackLayout Padding="20" Spacing="10">
+        <Label 
+            Text="📊 Relatório de Compras Recentes"
+            FontSize="22"
+            FontAttributes="Bold"
+            TextColor="#2E5AAC"
+            HorizontalOptions="Center" />
+
+        <Label Text="De:" TextColor="#2E5AAC" FontAttributes="Bold"/>
+        <DatePicker x:Name="dt_inicio" Format="dd/MM/yyyy"/>
+
+        <Label Text="Até:" TextColor="#2E5AAC" FontAttributes="Bold"/>
+        <DatePicker x:Name="dt_fim" Format="dd/MM/yyyy"/>
+
+        <Button Text="🔍 Filtrar" Clicked="btn_Filtrar_Clicked" BackgroundColor="#2E5AAC" TextColor="White"/>
+
+        <Label x:Name="lbl_total" Text="" FontAttributes="Bold" TextColor="Black"/>
+
+        <Frame Padding="0" Margin="0,10,0,0" VerticalOptions="FillAndExpand" BackgroundColor="White">
+            <ListView x:Name="listView" HasUnevenRows="True">
+                <ListView.Header>
+                    <Grid ColumnDefinitions="30,100,80,50,90" Padding="0,8">
+                        <Label Grid.Column="0" Text="ID" TextColor="Black" FontAttributes="Bold"/>
+                        <Label Grid.Column="1" Text="Descrição" TextColor="Black" FontAttributes="Bold"/>
+                        <Label Grid.Column="2" Text="Preço" TextColor="Black" FontAttributes="Bold"/>
+                        <Label Grid.Column="3" Text="Qtd" TextColor="Black" FontAttributes="Bold"/>
+                        <Label Grid.Column="4" Text="Data" TextColor="Black" FontAttributes="Bold"/>
+                    </Grid>
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid ColumnDefinitions="30,100,80,50,90" Padding="10,8">
+                                <Label Grid.Column="0" Text="{Binding Id}" TextColor="Black"/>
+                                <Label Grid.Column="1" Text="{Binding Descricao}" TextColor="Black"/>
+                                <Label Grid.Column="2" Text="{Binding Preco, StringFormat='{}{0:C}'}" TextColor="Black"/>
+                                <Label Grid.Column="3" Text="{Binding Quantidade}" TextColor="Black"/>
+                                <Label Grid.Column="4" Text="{Binding DataCadastro, StringFormat='{}{0:dd/MM/yyyy}'}" TextColor="Black"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Frame>
+    </VerticalStackLayout>
+</ContentPage>

@@ -136,4 +136,16 @@ public partial class ListaProduto : ContentPage
             await DisplayAlert("Erro", ex.Message, "OK");
         }
     }
+
+    private void ToolbarItem_Clicked_2(object sender, EventArgs e)
+    {
+        try
+        {
+            Navigation.PushAsync(new Views.Relatorio());
+        }
+        catch (Exception ex)
+        {
+            DisplayAlert("Erro", ex.Message, "OK");
+        }
+    }
 }
