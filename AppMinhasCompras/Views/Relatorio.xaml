@@ -14,10 +14,10 @@
             HorizontalOptions="Center" />
 
         <Label Text="De:" TextColor="#2E5AAC" FontAttributes="Bold"/>
-        <DatePicker x:Name="dt_inicio" Format="dd/MM/yyyy"/>
+        <DatePicker x:Name="dt_inicio" Format="dd/MM/yyyy" TextColor="#2E5AAC"/>
 
         <Label Text="Até:" TextColor="#2E5AAC" FontAttributes="Bold"/>
-        <DatePicker x:Name="dt_fim" Format="dd/MM/yyyy"/>
+        <DatePicker x:Name="dt_fim" Format="dd/MM/yyyy" TextColor="#2E5AAC"/>
 
         <Button Text="🔍 Filtrar" Clicked="btn_Filtrar_Clicked" BackgroundColor="#2E5AAC" TextColor="White"/>
 

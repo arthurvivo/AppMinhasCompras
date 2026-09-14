@@ -36,31 +36,33 @@
               Refreshing="listView_Refreshing"
               BackgroundColor="White">
                 <ListView.Header >
-                <Grid ColumnDefinitions="30,100, 80, 50, 90" Padding="0,8" >
+                    <Grid ColumnDefinitions="25,90, 65, 45, 75, 75" Padding="0,8" >
                         <Label Grid.Column="0" Text="ID" TextColor="Black" Padding="5" FontAttributes="Bold"/>
                         <Label Grid.Column="1" Text="Descrição" TextColor="Black" FontAttributes="Bold"/>
                         <Label Grid.Column="2" Text="Preço" TextColor="Black" FontAttributes="Bold"/>
-                    <Label Grid.Column="3" Text="Quantidade" TextColor="Black" FontAttributes="Bold"/>
-                    <Label Grid.Column="4" Text="Total" TextColor="Black" FontAttributes="Bold"/>
-                </Grid>
-            </ListView.Header>
-            <ListView.ItemTemplate>  
+                        <Label Grid.Column="3" Text="Qtd" TextColor="Black" FontAttributes="Bold"/>
+                        <Label Grid.Column="4" Text="Total" TextColor="Black" FontAttributes="Bold"/>
+                        <Label Grid.Column="5" Text="Data" TextColor="Black" FontAttributes="Bold"/>
+                    </Grid>
+                </ListView.Header>
+                <ListView.ItemTemplate>  
                 <DataTemplate>
                     <ViewCell>
                         <ViewCell.ContextActions>
                             <MenuItem Text="Remover" Clicked="MenuItem_Clicked_1" IsDestructive="True"
                                       CommandParameter="{Binding .}"/>
                         </ViewCell.ContextActions>
-                        <Grid ColumnDefinitions="30,100, 80, 50, 90"
+                            <Grid ColumnDefinitions="25,90, 65, 45, 75, 75"
                             RowDefinitions="Auto" 
-                            Padding="10,8">
+                            Padding="10,8">     
                                 <Label Grid.Column="0" Text="{Binding Id}" TextColor="Black" Padding="5" FontAttributes="Bold"/>
-                            <Label Grid.Column="1" Text="{Binding Descricao}" TextColor="Black" FontAttributes="Bold"/>
-                            <Label Grid.Column="2" Text="{Binding Preco, StringFormat='{}{0:C}'}" TextColor="Black" FontAttributes="Bold"/>
-                            <Label Grid.Column="3" Text="{Binding Quantidade}" TextColor="Black" FontAttributes="Bold"/>
-                            <Label Grid.Column="4" Text="{Binding Total, StringFormat='{}{0:C}'}" TextColor="Black" FontAttributes="Bold"/>
-                        </Grid>
-                    </ViewCell>
+                                <Label Grid.Column="1" Text="{Binding Descricao}" TextColor="Black" FontAttributes="Bold"/>
+                                <Label Grid.Column="2" Text="{Binding Preco, StringFormat='{}{0:C}'}" TextColor="Black" FontAttributes="Bold"/>
+                                <Label Grid.Column="3" Text="{Binding Quantidade}" TextColor="Black" FontAttributes="Bold"/>
+                                <Label Grid.Column="4" Text="{Binding Total, StringFormat='{}{0:C}'}" TextColor="Black" FontAttributes="Bold"/>
+                                <Label Grid.Column="5" Text="{Binding DataCadastro, StringFormat='{}{0:dd/MM/yyyy}'}" TextColor="Black" FontAttributes="Bold"/>
+                            </Grid>
+                        </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

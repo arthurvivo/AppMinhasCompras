@@ -28,7 +28,10 @@ public partial class Relatorio : ContentPage
 
             listaRelatorio.Clear();
 
-            List<Produto> tmp = await App.Db.GetProdutosPorPeriodo(dt_inicio.Date, dt_fim.Date);
+            List<Produto> tmp = await App.Db.GetProdutosPorPeriodo(
+                dt_inicio.Date.GetValueOrDefault(DateTime.Now),
+                dt_fim.Date.GetValueOrDefault(DateTime.Now)
+            );
 
             tmp.ForEach(i => listaRelatorio.Add(i));
 
